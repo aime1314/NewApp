@@ -1,0 +1,26 @@
+<!-- 我的-设置-意见反馈-列表 -->
+<script type='text/ng-template' id='feedback.html'>	
+	<header class='header clearfix'>
+		<span class='th'>意见反馈</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a ui-sref='feedbackEdit' class='header-r-word'>写意见</a>
+	</header>
+	<article class='wap-main'>
+		<!--暂无数据-->
+		<div class='no-income tc' ng-show='list.length==0'>
+			<img src='../../static/img/nocontent.png' class='no'>
+			<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+		</div>	
+		<div class='main-con pb-60' ng-show='list.length>0'>
+			<div class='listMobule mt-25'>
+				<div class='con' ng-repeat='item in list' ui-sref='feedbackDetail({c_id:item.c_id})'>
+					<div class='list-mobl'>
+						<p class='text'>{{item.content}}</p>
+						<p class='time'>{{item.create_time}}</p>
+					</div>
+					<div class='list-mobr'><span class='state fc-red'></span></div>
+				</div>
+			</div>
+		</div>
+	</article>
+</script>

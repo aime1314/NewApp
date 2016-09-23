@@ -1,0 +1,41 @@
+<!-- 理财-生财计划 -->
+<script type='text/ng-template' id='plan.html'>
+	<!--暂无数据-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+	</div>
+	<div class='productBox mt-10' ng-show='list.length>0' ng-repeat='item in list track by $index'>
+		<a class='pro-list' ui-sref='ttsc({nb_id:item.p_id})'>
+        	<div ng-show='item.is_status==0' class='tag'>已售罄</div>
+          	<div class='pro-list-hd'>
+            	<div class='tit-l'>{{item.title}}</div>
+        			<div class='label-r'>
+          				<span class='lab' ng-repeat='sub in item.nb_status'>{{sub}}</span>
+        			</div>            	
+                	<div class='label-r' ng-repeat='sub in item.nature'>
+                    	<span class='lab'>{{sub}}</span>
+                	</div>
+              	</div>
+              	<div class='pro-list-bd'>
+                  	<ul class='pro-item clearfix'>
+                        <li>
+                            <strong class='data-t'>{{item.rate}}%</strong>
+                            <span class='txt'>年化收益</span>
+                        </li>
+                      	<li>
+                        	<strong class='data-t'>{{item.invest_min}}元</strong>
+                        	<span class='txt'>起投金额</span>
+                      	</li>
+                        <li>
+                          <strong class='data-t'>{{item.income}}元</strong>
+                          <span class='txt'>每万元日收益</span>
+                        </li>
+                  	</ul>
+    			</div>
+  		</a>
+	</div>
+	<div class='pullUpLabel' ng-show='list.length>0'>
+		<a ng-click='load()' load-more='cur_status'></a>
+	</div>  	
+</script>

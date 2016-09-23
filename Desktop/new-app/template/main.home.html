@@ -1,0 +1,114 @@
+<!-- 首页 -->
+<script type='text/ng-template' id='home.html'>
+	 <header class='header clearfix'>
+    	<span class='th'><img src='../static/img/logo_top.png'/></span>
+	    <a ui-sref='placard' class='header-r'><i class='icon-gonggao iconfont'></i></a>
+<!--
+	    <a class='header-r scan'><i class='icon-fenxiang iconfont'></i></a>
+	  -->  
+	</header>
+ 	 <article class='wap-main'>
+    		<div class='main-con pb-60'>
+    			<!-- 轮播图 -->
+    			<div id='divs2' class='kslider' slide-box>
+    				<div class='ks_dbox ks_ts'>
+    					<div class='ks_warp'>
+    						<a href='http://q.eqxiu.com/s/x73t2dH9'><img src='../static/img/index/1.jpg'／></a>
+    					</div>
+    					<div class='ks_warp'>
+    						<a ui-sref='ttsc({nb_id:2})'><img src='../static/img/index/2.jpg'／></a>
+    					</div>
+              <div class='ks_warp'>
+                <a ui-sref='activity1'><img src='../static/img/index/3.jpg'／></a>
+              </div>
+              <div class='ks_warp'>
+                <a ui-sref='landing'><img src='../static/img/index/4.jpg'／></a>
+              </div>
+              <div class='ks_warp'>
+                <a href='javascript:'><img src='../static/img/index/5.jpg'／></a>
+              </div>
+    				</div>
+    				<ul class='ks_wt'>
+    					<li class='ks_t2'></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+    				</ul>
+    			</div>	
+          	<p class='fs-12 fc-blue elli pd10 tc' ui-sref='placardDetail({hp_id:placard.hp_id})' ng-show='placard.hp_id'>最新公告：{{placard.title}}</p>	
+        	<!-- end轮播图 -->
+      		<div class='indexLab'>
+		        <p class='keywords'>上海科技创业投资有限公司（国资委直属机构）</p>
+	        	<p class='tags'>上汽集团、仪电集团旗下基金战略投资</p>
+      		</div>
+      		<!--国资背景模块 s-->
+      		<div class='vertical-view clearfix'>
+        		<a class='fix-item' ui-sref='summary({type:1})'>
+          			<div class='data-icon icon1'><i class="iconfont icon-guoqibeijing"></i></div>
+          			<div class='words'>国资股东</div>
+        		</a>
+        		<a class='fix-item' ui-sref='summary({type:4})'>
+          			<div class='data-icon icon2'><i class="iconfont icon-anquan1"></i></div>
+          			<div class='words'>资金安全</div>
+    			</a>
+        		<a class='fix-item' ui-sref='summary({type:6})'>
+          			<div class='data-icon icon3'><i class="iconfont icon-msnui-rule-page"></i></div>
+          			<div class='words'>规范运营</div>
+        		</a>
+        		<a class='fix-item' ui-sref='summary({type:3})'>
+          			<div class='data-icon icon4'><i class="iconfont icon-gaoshouyi"></i></div>
+          			<div class='words'>较高收益</div>
+        		</a>
+      		</div>
+      		<!--国资背景模块 e-->
+	      	<!--产品模块 s-->
+	      	<div class='productBox mt-10' ng-repeat='item in list track by $index'>
+        		<a class='pro-list' ng-click='goDetail(item.nb_type, item.nb_id)'>
+          		<!--	<div ng-show='item.is_status==0' class='tag'>已售罄</div>-->
+          			<div class='pro-list-hd'>
+            			<div class='tit-l'>{{item.title}}</div>
+            			<div class='label-r'>
+              				<span class='lab' ng-repeat='sub in item.nb_status'>{{sub}}</span>
+            			</div>
+          			</div>
+          			<div class='pro-list-bd'>
+            			<ul class='pro-item clearfix'>
+              				<li><strong class='data-t'>{{item.final_rate}}%</strong><span class='txt'>年化收益</span></li>
+            				<li ng-if='item.nb_type!="3"'><strong class='data-t'>{{item.np_bidding_amt}}元</strong><span class='txt'>起投金额</span></li>
+          					<li><strong class='data-t'>{{item.term}}{{item.term_desc}}</strong><span class='txt'>{{item.term_coda}}</span></li>
+                    <li ng-if='item.nb_type=="3"'><strong class='data-t'>{{item.present_interest}}元</strong><span class='txt'>赠送利息</span></li>
+      					 </ul>
+    			    </div>
+					<div class='percentBox' ng-if='item.nb_type!=1'>
+						<div class='percent-l'>
+							<div class='percent-bar' percent-anim='item.percentage'>
+								<div class='percent-on'></div>
+							</div>
+						</div>
+						<div class='ml-5 fs-12'>{{item.percentage}}%</div>
+					</div>
+    			</a>
+    		</div>
+			<!--产品模块 e-->
+		</div>
+	</article>
+  
+  <!--!isNewApp&&isShow-->
+  <div class='Downbott' ng-if>
+    <div class="fl  logo_bl">
+      <dl>
+        <dt class='mr-5'></dt>
+        <dd class="fs-12 line-h18">生菜金融客户端<span class="fs_12 block">国资背景 安心生财</span></dd>
+      </dl>
+    </div>
+    <div class='fr  btn_r pr_15'>
+      <div class='d-box'>
+        <a href='http://m.shengcaijinrong.com/app/' class='btn-down mt_5'>APP下载</a>
+        <span class='s_close icon-gb iconfont' ng-click='tagClose()'></span>
+      </div>
+    </div>
+  </div>
+	<ng-include src='"footer.html"'></ng-include>
+
+</script>

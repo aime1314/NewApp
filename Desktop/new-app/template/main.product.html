@@ -1,0 +1,20 @@
+<!-- 理财 -->
+<script type='text/ng-template' id='product.html'>
+	<header class='header clearfix'>
+		<span class='th'>理财</span>
+	</header>
+	<article class='wap-main'>	
+		<div class='main-con pb-60'>
+		<!-- tab s-->
+      	<div class='tab-module clearfix'>
+        	<ul class='clearfix'>
+          		<li ui-sref='product.plan' ng-class='{tab_on:$state.includes("product.plan")}' style='width:50%;'>生财计划</li>
+          		<li ui-sref='product.scatter' ng-class='{tab_on:$state.includes("product.scatter")}' style='width:50%;'>散标专区</li>
+          		<!-- <li ui-sref='product.transfer' ng-class='{tab_on:$state.includes("product.transfer")}'>转让专区</li>-->
+    		</ul>
+      	</div>
+      	<!-- tab e-->
+      	<ui-view></ui-view>
+	</article>
+	<ng-include src='"footer.html"'></ng-include>
+</script>

@@ -1,0 +1,26 @@
+<!-- 我的-我的投资-回款中 -->
+<script type='text/ng-template' id='investBacksection.html'>
+	<!--暂无数据-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+	</div>
+	<div class='investBox mt-10' ng-show='list.length>0'>
+		<div class='inverst-type-1 clearfix'>
+			<a class='inverst-item inverstRecord-bd' ui-sref='investDetail({ndd_id:item.ndd_id, type:2})' ng-repeat='item in list'>
+				<div class='int-l'>
+					<strong class='l-hd'>{{item.title}}</strong>
+					<strong class='l-bd'>{{item.date}}</strong>
+				</div>
+				<div class='int-c'>
+					<strong class='l-hd'><em class='fs-14'>{{item.amount | number:2}}元</em></strong>
+					<strong class='l-bd'><em class='fc-orange'>{{item.status_remark}}</em></strong>
+				</div>
+				<div class='int-r'><i class='icon-fangxiangyou iconfont'></i></div>
+			</a>
+		</div>
+		<div class='pullUpLabel' ng-show='list.length>0'>
+			<a ng-click='load()' load-more='cur_status'></a>
+		</div>			
+	</div>
+</script>

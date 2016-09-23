@@ -1,0 +1,82 @@
+<!-- 天天生财标的详情 -->
+<script type='text/ng-template' id='ttsc.html'>
+	<header class='header clearfix'>
+		<span class='th'>{{data.title}}</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-40' style='padding-bottom:4rem;'>
+			<div class='product-head-page'>
+				<div class='fund-box'>
+					<ul class='ul-list clearfix'>
+						<li class='li'>
+							<div class='inside rate'>{{data.day_rate_7}}<em class='unit'>%</em></div>
+							<strong class='words'>7日年化收益率</strong><em class='line line2'></em>
+						</li>
+						<li class='li'>
+							<div class='inside income'>{{data.income}}</div>
+							<strong class='words'>每万元日收益(元)</strong>
+						</li>
+					</ul>
+				</div>
+				<a class='assets-mon pb-5'>剩余金额：<em class='fs-16'>{{data.amount}}</em>元</a>
+			</div>
+			<div class='income-contain'>
+				<!--tab s-->
+				<div class='day-tab'>
+					<ul class='ul-head clearfix'>
+						<li ng-class='{active:tabIndex==0}' ng-click='showTab(0)'><span>七日年化收益率</span></li>
+						<li ng-class='{active:tabIndex==1}' ng-click='showTab(1)'><span>每万元日收益</span></li>
+					</ul>
+					<em class='day-tab-bg'></em>
+				</div>
+				<!--tab e-->
+				<!--状态 s-->
+				<div class='sc-Box clearfix'>
+					<div class='sc-change' ng-show='tabIndex==0'>
+						<div class='sc-chartBox'>
+							<div ttsc-chart x='{{data.hq_x}}' y='{{data.hq_y}}'></div>
+						</div>
+						
+					</div>
+					<div class='sc-change' ng-show='tabIndex==1'>
+						<ul class='sc-details'>
+							<li ng-repeat='item in data.list'><span class='day'>{{item.create_day}}</span><span class='money'>{{item.thousand_income}}元</span></li>
+						</ul>
+					</div>
+				</div>
+				<!--状态 e-->
+			</div>
+		</div>
+	</article>
+	<!--悬浮输入框-->
+	<div class='suspend-box bg_white border-t'>
+		<!--充值 s-->
+		<div class='rehModule'>
+			<div class='user-account fs-12 clearfix'>
+				<div class='fl'>账户余额:<span ng-show='!is_login'>请<span class='fc-blue' ng-click='login()'>登录</span>后查看</span><span ng-show='is_login' class='fc-red ml-5'>{{balance | number:2}}元</span>
+					<a ng-show='is_login' ui-sref='recharge' class='fc-blue ml-5'>充值</a>
+				</div>
+				<div class='fr'>
+					<p>可投金额:<strong class='fc-red'>{{data.remain_amount | number:2}}</strong>元</p>
+				</div>
+			</div>
+			<div class='user-account fs-12 mt-10' ng-if>预期收益(元)：<em class='fc-red'>{{expect_interest}}</em></div>
+		</div>
+		<!--充值 e-->
+		<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+			<div class='invest-contain'>
+				<div class='input mr-5'>
+					<input type='text' name='bid_amount' ng-model='bid_amount' 
+						num-validate='2' ng-maxlength="12" placeholder='{{data.invest_min}}元起投' required
+						amount-validate minamount='{{data.invest_min}}' leftamount='{{data.remain_amount}}' balance='{{balance}}' bidtype='1'>
+				</div>
+				<button class='invest-btn' ng-class='{cur:submitForm.$valid && agree}' ng-show='bidEnable'>立即投资</button>
+				<button class='invest-btn' ng-show='!bidEnable' disabled='true'>已售罄</button>
+			</div>
+		</form>
+		<div class='pd10 fs-12 border-b'>
+			<i class='iconfont icon-zhengque1' ng-class='{"fc-green":agree}' ng-click='switchAgree()'></i>同意《<a ui-sref='summary({type:9})' class='fc-blue fs-12'>天天生财三方协议</a>》《<a ui-sref='summary({type:10})' class='fc-blue fs-12'>天天生财产品规则</a>》
+		</div>  
+	</div>	
+</script>

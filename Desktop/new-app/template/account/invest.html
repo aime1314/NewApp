@@ -1,0 +1,19 @@
+<!-- 我的-我的投资 -->
+<script type='text/ng-template' id='invest.html'>
+	<header class='header clearfix'>
+		<span class='th'>我的投资</span>
+		<a class='header-l back' back-url='account'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-20'>
+			<div class='tab-module clearfix'>
+				<ul class='clearfix'>
+					<li ng-class='{tab_on:$state.includes("invest.backsection")}'><a ui-sref='invest.backsection'>回款中</a></li>
+					<li ng-class='{tab_on:$state.includes("invest.end")}'><a ui-sref='invest.end'>已结束</a></li>
+					<li ng-class='{tab_on:$state.includes("invest.processing")}'><a ui-sref='invest.processing'>投资中</a></li>
+				</ul>
+			</div>
+			<ui-view></ui-view>
+		</div>
+	</article>
+</script>

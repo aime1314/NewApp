@@ -1,0 +1,84 @@
+<!-- 我的-设置 -->
+<script type='text/ng-template' id='settings.html'>
+	<header class='header clearfix'>
+	    <span class='th'>我的</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a class='header-r-word' ng-click='logout()'>退出</a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-40'>
+			<!--用户头像 s-->
+			<div class='user-top-box attesAuto'>
+				<div class='user-img'><img src='../../static/img/logo2.png' width='100%'/></div>
+				<div class='info-user'>
+					<div class='autonym-state'>{{auth_status_desc}}</div>
+					<div class='user-phone'>{{mobile | limitTo:3}}****{{mobile | limitTo:-4}}</div>
+				</div>
+			</div>
+			<!--用户头像 e-->
+			<!--实名认证 s-->
+			<div class='detail-a mt-15'>
+				<a class='th' ng-click='auth()'>
+					<div class='bd-r'>
+						<i class='icon-left icon-shimingrenzheng iconfont'></i>实名认证
+						<span class='sp-lab'>{{auth_status_desc}}</span>
+						<i class='icon-fangxiangyou iconfont' ng-show='!is_auth'></i>
+					</div>
+				</a>
+				<a class='th'>
+					<div class='bd-r'>
+						<i class='icon-left icon-phone iconfont'></i>绑定手机
+						<span class='status'>{{mobile | limitTo:3}}****{{mobile | limitTo:-4}}</span>
+					</div>
+				</a>
+			</div>
+			<!--实名认证 e-->
+			<!--我的银行卡 s-->
+			<div class='detail-a mt-15'>
+				<a class='th' ng-click='addBankCard()'>
+					<div class='bd-r'>
+						<i class='icon-left icon-yinxingqia iconfont'></i>我的银行卡
+						<span class='sp-lab'>{{card_num_desc}}</span>
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				<a class='th' ui-sref='password'>
+					<div class='bd-r'>
+						<i class='icon-left icon-mimaguanli iconfont'></i>密码管理
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+			</div>
+			<!--我的银行卡 e-->
+			<!--我的二维码 s-->
+			
+			<div class='detail-a mt-15'>
+				<!--
+				<a class='th' ui-sref='scanCode'>
+					<div class='bd-r'>
+						<i class='icon-left icon-erweima iconfont'></i>我的二维码
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				-->
+				<a class='th'>
+					<div class='bd-r'>
+						<i class='icon-left icon-tuijian iconfont'></i>我的推荐码
+						<span class='status'>{{inviation_code}}</span>
+					</div>
+				</a>
+			</div>
+			<!--我的二维码 e-->
+			<!--意见反馈 s-->
+			<div class='detail-a mt-15'>
+				<a class='th' ui-sref='feedback'>
+					<div class='bd-r'>
+						<i class='icon-left icon-yijiantubiao iconfont'></i>意见反馈
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+			</div>
+			<!--意见反馈 e-->
+		</div>
+	</article>
+</script>

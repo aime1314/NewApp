@@ -1,0 +1,19 @@
+<!-- 我的-我的流量-查看详情 -->
+<script type='text/ng-template' id='flowDetail.html'>
+	<header class='header clearfix'>
+		<span class='th'>我的流量</span>
+		<a class='header-l back' back-url='flow'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-40'>
+			<div class='tab-module flow-tab clearfix'>
+				<ul class='clearfix'>
+					<li ng-class='{tab_on:$state.includes("flowDetail.income")}'><a ui-sref='flowDetail.income'>流量收入(M)</a></li>
+					<li ng-class='{tab_on:$state.includes("flowDetail.expend")}'><a ui-sref='flowDetail.expend'>流量支出(M)</a></li>
+				</ul>
+			</div>
+			<div class='record-page' ui-view></div>
+		</div>
+		
+	</article>
+</script>

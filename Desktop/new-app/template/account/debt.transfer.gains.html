@@ -1,0 +1,33 @@
+<!-- 我的-散标专区-详情-债权转让-收益计划 -->
+<script type='text/ng-template' id='debtTransferGains.html'>	
+	<header class='header clearfix'>
+		<span class='th'>收益计划</span>
+	    <a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+  	</header>
+ 	<article class='wap-main'>
+ 		<!--暂无数据-->
+		<div class='no-income tc' ng-show='list.length==0'>
+			<img src='../../static/img/nocontent.png' class='no'>
+			<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+		</div>		
+    	<div class='main-con pb-40' ng-show='list.length>0'>
+      		<!--模块 s-->
+        	<div class='record-page'>
+          		<table class='record-con' cellspacing='0' cellpadding='0'>
+            		<tr class='th'>
+          				<th class='cell'>期数</th>
+              			<th class='cell'>日期</th>
+             		 	<th class='cell'>金额（元）</th>
+             		 	<th class='cell'>状态</th>
+        			</tr>
+            		<tr class='td' ng-repeat='item in list track by $index'>
+              			<td class='cell'>{{$index+1}}</td>
+              			<td class='cell'>{{item.date}}</td>
+              			<td class='cell'>{{item.receivable}}</td>
+              			<td class='cell'>{{item.status_remark}}</td>
+            		</tr>
+            	</table>
+        	</div> 
+		</div> 
+	</article> 
+</script>

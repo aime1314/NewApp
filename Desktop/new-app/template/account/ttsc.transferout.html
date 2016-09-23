@@ -1,0 +1,48 @@
+<!-- 我的-天天生财-转出 -->
+<script type='text/ng-template' id='ttscTransferout.html'>
+	<header class='header clearfix'>
+		<span class='th'>天天生财</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-20'>
+			<!--用户头像 s-->
+			<div class='user-top-box'>
+				<div class='user-img'>
+					<i class='iconfont icon-wode1' ng-if></i>
+					<img src='../../static/img/logo2.png' width='100%'/>
+				</div>
+				<p class='user-phone' ng-show='mobile'>{{mobile | limitTo:3}}****{{mobile | limitTo:-4}}</p>
+			</div>
+			<!--用户头像 e-->
+			<div class='fund-head-page mt-15'>
+				<p class='fs-14'>持有金额：<em class='fc-red ml-5'>{{uis_total_str}}元</em></p>
+			</div>
+			<!--表单模块 s-->
+			<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+				<div class='rehModule fund-container-bd'>
+					<div class='invest-account pb-10'>
+						<div class='account-l'>
+							<input type='text' name='amount' ng-model='amount' class='account-inp' placeholder='请输入转出金额' required ng-focus num-validate='2'>
+							<span class='lab'>元</span>
+						</div>
+						<!-- error -->
+						<div class='prompt-error' ng-show='submitForm.amount.$invalid && (amount > uis_total) && (!submitForm.amount.$focused || submitForm.submitted)'>
+							<i class='iconfont icon-cuowu1'></i>
+							<span ng-show='submitForm.amount.$error.required'>请输入转出金额</span>
+							<span ng-show='amount > uis_total'>您最多可转出{{uis_total}}元</span>
+						</div>
+						<!--							
+						<div class='account-r'>
+							<a ng-click='allIn()' class='total-btn'>全转</a>
+						</div>
+						-->
+					</div>
+				</div>
+				<div class='pd10 mt-15'>
+					<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid}' ng-disabled='!submitForm.$valid'>确认转出</button>
+				</div>
+			</form>
+		</div>
+	</article>
+</script>

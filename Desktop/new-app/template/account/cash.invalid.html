@@ -1,0 +1,33 @@
+<!-- 我的-我的红包-已过期 -->
+<script type='text/ng-template' id='cashInvalid.html'>	
+	<!--暂无数据-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+	</div>
+	<ul class='clearfix redPageBox' ng-show='list.length>0'>
+		<li class='get-content' ng-repeat='item in list'>
+			<div class='get-item'>
+				<div class='get-top clearfix'></div>
+				<div class='get-center'>
+					<p class='amount-l'>
+						<span class='unit'>¥</span>
+						<span class='num'>{{item.amount}}</span><em class=''>元</em>
+					</p>
+					<div class='explain-c'>
+						<h3 class='explain-th'>{{item.type_desc}}</h3>
+						<p class='bd'>{{item.limit_desc}}</p>
+						<p class='bd'>{{item.condition}}</p>
+						<p class='bd'>{{item.enable_duration_date}}</p>
+					</div>
+				</div>
+			</div>
+			<div class='get-prompt clearfix'>
+				<a ui-sref='product.scatter' class='fc-blue fr'>去投资》</a>
+			</div>
+		</li>
+	</ul>
+	<div class='pullUpLabel' ng-show='list.length>0'>
+		<a ng-click='load()' load-more='cur_status'></a>
+	</div>	
+</script>

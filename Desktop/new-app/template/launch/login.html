@@ -1,0 +1,53 @@
+<!-- 登录 -->
+<script type='text/ng-template' id='login.html'>
+	<header class='header clearfix'>
+		<span class='th'>登录</span>
+		<a class='header-l' ng-click='back()'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a ui-sref='register' class='header-r-word'>注册</a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<div class='logo-img-box pt-10'>
+				<a ui-sref='home'><img src='../../static/img/logo.png'/></a>
+			</div>
+			<!--表单模块 s-->
+			<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+				<div class='form-box pt-15 clearfix' style='border-top:0;'>
+					<div class='field border-t autoClear'>
+						<div class='label'>用户名</div>
+						<div class='field-control'>
+							<input type='text' name='mobile' ng-model='mobile' ng-pattern='mobilePattern' placeholder='请输入登录手机号' class='input-req' required ng-focus>
+						</div>
+						<div class='icon-f'>
+							<i class='iconfont icon-zhengque1 fc-green' ng-if='!submitForm.mobile.$invalid && (submitForm.mobile.$focused || !submitForm.submitted)'></i>
+							<i class='iconfont icon-cuowu fc-red' ng-if='submitForm.mobile.$invalid && (!submitForm.mobile.$focused || submitForm.submitted)' ng-click='clearUser() || (submitForm.mobile.$invalid && (!submitForm.mobile.$focused || submitForm.submitted)==false)'></i>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.mobile.$invalid && (!submitForm.mobile.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.mobile.$error.required'>请输入登录手机号</span>
+						<span ng-show='submitForm.mobile.$error.pattern'>请输入一个正确的手机号</span>
+					</div>					
+					<div class='field autoClear'>
+						<div class='label'>登录密码</div>
+						<div class='field-control'>
+							<input type='password' name='password' ng-model='password' ng-minlength='6' ng-maxlength='16' ng-pattern='loginPasswordPattern' placeholder='请输入登录密码' class='input-req' required ng-focus>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.password.$invalid && (!submitForm.password.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.password.$error.required'>请输入登录密码</span>
+						<span ng-show='submitForm.password.$error.minlength || submitForm.password.$error.maxlength || submitForm.password.$error.pattern'>登录密码为6-16位数字、字母、特殊符号，至少包含其中两种</span>
+					</div>												
+					<div class='pd10 mt-15'>
+						<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid}' ng-disabled='!submitForm.$valid'>登录</button>
+					</div>
+					<p ui-sref='resetLoginPassword' class='tc fc-blue fs-12 mt-5'>忘记密码？</p>
+				</div>
+			</form>
+			<!--表单模块 e-->
+		</div>
+	</article>
+</script>

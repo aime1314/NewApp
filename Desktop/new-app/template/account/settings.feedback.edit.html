@@ -1,0 +1,33 @@
+<!-- 我的-设置-意见反馈-写意见 -->
+<script type='text/ng-template' id='feedbackEdit.html'>	
+	<header class='header clearfix'>
+		<span class='th'>意见填写</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<!--表单模块 s-->
+			<div class='form-box mt-15 clearfix'>
+				<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+					<div class='title-content'>
+						<textarea rows='6' placeholder='请填写您的意见，您的宝贵意见将会对我们有很大的帮助' name='content' ng-model="content" textarea-validate max='max' left='left' required></textarea>
+						<p class='textareaNum-count'><em></em>{{left}}/{{max}}</p>
+					</div>
+
+					<div class='field autoClear'>
+						<div class='label2'>图形验证码</div>
+						<div class='field-control'>
+							<input type='text' name='verifyCode' ng-model='verifyCode' placeholder='请输入图形验证码' class='input-req'>
+						</div>
+						<img ng-src='{{verifyCodeSrc}}' ng-click='changeVerify()' class='code-img'/>
+					</div>	
+					
+					<div class='pd10 mt-15'>
+						<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid}' ng-disabled='!submitForm.$valid'>提交</button>
+					</div>
+				</form>
+			</div>
+			<!--表单模块 e-->
+		</div>
+	</article>
+</script>

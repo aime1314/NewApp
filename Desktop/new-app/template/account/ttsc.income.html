@@ -1,0 +1,25 @@
+<!-- 我的-天天生财-收益明细 -->
+<script type='text/ng-template' id='ttscIncome.html'>
+	<!--暂无收益-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无收益</p>
+	</div>
+	<!--收益明细-->
+	<div class='record-page' ng-show='list.length > 0'>
+		<table class='record-con' cellspacing='0' cellpadding='0'>
+			<tr class='th' style='background:#e1e1e1'>
+				<th class='cell' style='border: 1px solid #999;'>日期</th>
+				<th class='cell' style='border: 1px solid #999;'>交易类型</th>
+				<th class='cell' style='border: 1px solid #999;'>交易金额</th>
+				<th class='cell' style='border: 1px solid #999;'>状态</th>
+			</tr>
+			<tr class='td' ng-repeat='item in list'>
+				<td class='cell'>{{item.settle_day}}</td>
+				<td class='cell'>{{item.type_remark}}</td>
+				<td class='cell'>{{item.interest}}元</td>
+				<td class='cell'>{{item.status_remark}}</td>
+			</tr>
+		</table>
+	</div>	
+</script>

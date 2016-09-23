@@ -1,0 +1,65 @@
+<!-- 我的-我的流量-提取到手机 -->
+<script type='text/ng-template' id='flowFetch.html'>	
+	<header class='header clearfix'>
+		<span class='th'>提取到手机</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<!--用户头像 s-->
+			<div class='user-top-box'>
+				<div class='user-img'>
+					<i class='iconfont icon-wode1' ng-if></i>
+					<img src='../../static/img/logo2.png' width='100%'/>
+				</div>
+				<p class='user-phone' ng-show='mobile'>{{mobile | limitTo:3}}****{{mobile | limitTo:-4}}</p>
+			</div>
+			<!--用户头像 e-->
+			<p class="pd10 fs-12 bg_white border-b">流量余额<em class="ml-5 fc-orange">{{total_flow}}</em>M</p>
+			<!--模块 s-->
+	        <div class="flux-rechange-box"  ng-if='type==1'>
+	            <ul class="con clearfix">
+	                <li class="on"  ng-repeat='item in list1' toggle-class='on' ng-click='onSelected(item)'><span>{{item}}M</span></li>
+	            </ul>
+	            <p class="fluxrech-hint"><em class=fc-orange>{{flow}}M</em>流量包</p>
+	        </div>
+
+	        <div class="flux-rechange-box"  ng-if='type==2'>
+	            <ul class="con clearfix">
+	                <li class="on"  ng-repeat='item in list2' toggle-class='on' ng-click='onSelected(item)'><span>{{item}}M</span></li>
+	            </ul>
+	            <p class="fluxrech-hint"><em class=fc-orange>{{flow}}M</em>流量包</p>
+	        </div>
+
+
+	        <div class="flux-rechange-box"  ng-if='type=="3"'>
+	            <ul class="con clearfix">
+	                <li class="on"  ng-repeat='item in list3' toggle-class='on' ng-click='onSelected(item)'><span>{{item}}M</span></li>
+	            </ul>
+	            <p class="fluxrech-hint"><em class=fc-orange>{{flow}}M</em>流量包</p>
+	        </div>
+	    <!--模块 e-->
+			<!--表单模块 s-->
+			<div class='form-box clearfix'>
+				<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+				<!--	<div class='field autoClear'>
+						<div class='label'>提取流量</div>
+						<div class='field-control'>
+							<input type='text' name='flow' ng-model='flow' placeholder='请输入提取流量' class='input-req' required ng-focus num-validate>
+						</div>
+						<span>M</span>
+					</div>-->
+					<!-- error -->
+				<!-- 	<div class='prompt-error' ng-show='submitForm.flow.$invalid && (!submitForm.flow.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.flow.$error.required'>请输入提取流量</span>
+					</div>	-->	
+					<div class='pd10 mt-15'>
+						<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid}' ng-disabled='!submitForm.$valid'>提取</button>
+					</div>
+				</form>
+			</div>
+			<!--表单模块 e-->
+		</div>
+	</article>
+</script>	

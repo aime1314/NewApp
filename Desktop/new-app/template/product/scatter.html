@@ -1,0 +1,79 @@
+<!-- 理财-散标专区 -->
+<script type='text/ng-template' id='scatter.html'>
+	<!--暂无数据-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+	</div>
+	<div class='productBox mt-10' ng-show='list.length>0' ng-repeat='item in list track by $index'>
+		<a class='pro-list' ui-sref='common({nb_id:item.nb_id})' ng-if='item.ni_type=="0"'>
+        <!--<div ng-show='item.is_status==0' class='tag'>已售罄</div>-->
+        	<div class='pro-list-hd'>
+          	<div class='tit-l'>{{item.title}}</div>
+          	<div class='label-r' ng-repeat='sub in item.nb_status'>
+              	<span class='lab'>{{sub}}</span>
+          	</div>
+        	</div>
+        	<div class='pro-list-bd'>
+          	<ul class='pro-item clearfix'>
+          	   <li>
+	                 <strong class='data-t'>{{item.final_rate}}%</strong>
+	                 <span class='txt'>年化收益</span>
+              	</li>
+              	<li>
+                	<strong class='data-t'>{{item.np_bidding_amt}}元</strong>
+                	<span class='txt'>起投金额</span>
+              	</li>
+              	<li>
+                	<strong class='data-t'>{{item.term}}{{item.term_desc}}</strong>
+                	<span class='txt'>投资期限</span>
+              	</li>
+          	</ul>
+		      </div>
+        	<div class='percentBox'>
+        		<div class='percent-l'>
+        			<div class='percent-bar' percent-anim='item.percentage'>
+        				<div class='percent-on'></div>
+        			</div>
+        		</div>
+        		<div class='ml-5 fs-12'>{{item.percentage}}%</div>
+        	</div>			
+  		</a>	
+  		<a class='pro-list' ui-sref='commonTransfer({nb_id:item.nb_id})' ng-if='item.ni_type=="1"'>
+        	<!--<div ng-show='item.is_status==0' class='tag'>已售罄</div>-->
+          	<div class='pro-list-hd'>
+            	<div class='tit-l'>{{item.title}}</div>
+            	<div class='label-r' ng-repeat='sub in item.nb_status'>
+                	<span class='lab'>{{sub}}</span>
+            	</div>
+          	</div>
+          	<div class='pro-list-bd'>
+              	<ul class='pro-item clearfix'>
+            		<li>
+	                    <strong class='data-t'>{{item.final_rate}}%</strong>
+	                    <span class='txt'>年化收益</span>
+                  	</li>
+                  	<li>
+                    	<strong class='data-t'>{{item.term}}{{item.term_desc}}</strong>
+                    	<span class='txt'>剩余期限</span>
+                  	</li>
+                   	<li>
+                    	<strong class='data-t'>{{item.present_interest}}元</strong>
+                    	<span class='txt'>赠送利息</span>
+                  	</li>                 	
+              	</ul>
+      			</div>
+      			<div class="percentBox">
+      				<div class='percent-l'>
+      					<div class='percent-bar' percent-anim='item.percentage'>
+      						<div class='percent-on'></div>
+      					</div>
+      				</div>
+      				<div class='ml-5 fs-12'>{{item.percentage}}%</div>
+      			</div>			
+  		</a>	
+	</div>
+	<div class='pullUpLabel' ng-show='list.length>0'>
+		<a ng-click='load()' load-more='cur_status'></a>
+	</div>  	
+</script>

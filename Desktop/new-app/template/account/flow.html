@@ -1,0 +1,50 @@
+<!-- 我的-我的流量 -->
+<script type='text/ng-template' id='flow.html'>
+	<header class='header clearfix'>
+		<span class='th'>我的流量</span>
+		<a class='header-l back' back-url='account'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<div class='user-head-page pt-20'>
+				<div class='tc integral-num elli'>
+					<em class='inter-item' datanum='{{data.total}}'>{{data.total_flow}}</em><span>M</span>
+				</div>
+				<a class='assets-mon mt-10 pb-20' ui-sref='flowDetail.income'>查看详情</a>
+				<div class='fund-box mt-5'>
+					<ul class='ul-list clearfix'>
+						<li class='li'><span>流量收入(M)</span><strong>{{data.income_flow}}</strong><em></em></li>
+						<li class='li'><span>流量支出(M)</span><strong>{{data.expend_flow}}</strong></li>
+					</ul>
+				</div>
+			</div>
+			<!--余额充流量模块 s-->
+			<div class='detail-a mt-15'>
+				<!--
+				<a class='th' ui-sref='flowRecharge'>
+					<div class='bd-r'>
+						<i class='icon-left icon-chongzhi iconfont'></i>余额充流量
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				-->
+				<a class='th' ui-sref='flowHandsel'>
+					<div class='bd-r'>
+						<i class='icon-left icon-liuliang2 iconfont'></i>转赠给好友
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				<a class='th' ui-sref='flowFetch'>
+					<div class='bd-r'>
+						<i class='icon-left icon-chonghuafei iconfont'></i>提取到手机
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+			</div>
+			<!--我要充值模块 e-->
+		</div>
+		<div class='susp-bottom'>
+		  	<div class='con'>流量提取及转赠一般为48小时内到账且只有当月有效</div>
+		</div>		
+	</article>
+</script>

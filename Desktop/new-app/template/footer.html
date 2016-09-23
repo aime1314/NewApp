@@ -1,0 +1,9 @@
+<!-- 导航 -->
+<script type='text/ng-template' id='footer.html'>
+	<footer class='footer_all'>
+  		<a ui-sref='home' ng-class='{cur:$state.includes("home")}'><i class='icon-shouye1 iconfont' ng-class='{"icon-shouye2":$state.includes("home")}'></i><strong>首页</strong></a>
+  		<a ui-sref='product.plan' ng-class='{cur:$state.includes("product.*")}'><i class='icon-caiwuguanli iconfont' ng-class='{"icon-caiwuguanli2":$state.includes("product.*")}'></i><strong>理财</strong></a>
+  		<a ui-sref='account' ng-class='{cur:$state.includes("account")}'><i class='icon-wode1 iconfont' ng-class='{"icon-wode2":$state.includes("account")}'></i><strong>我的</strong></a>
+		<a ui-sref='more' ng-class='{cur:$state.includes("more")}'><i class='icon-chanpinjieshao1 iconfont' ng-class='{"icon-chanpinjieshao2":$state.includes("more")}'></i><strong>更多</strong></a>
+	</footer>
+</script>

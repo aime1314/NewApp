@@ -1,0 +1,45 @@
+<!-- 我的-资金明细 -->
+<script type='text/ng-template' id='bill.html'>	
+	<header class='header clearfix'>
+		<span class='th'>资金明细</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a class='header-r-word' bill-filter>筛选</a>
+	</header>
+	<article class='wap-main'>
+		<!--暂无数据-->
+		<div class='no-income tc' ng-show='list.length==0'>
+			<img src='../../static/img/nocontent.png' class='no'>
+			<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+		</div>	
+		<div class='main-con pb-20' ng-show='list.length>0'>
+	  		<div class='investBox border-t mt-10'>
+	  			<a class='inverst-item inverstDetail-bd' ng-repeat='item in list track by $index'>
+					<div class='int-l'><strong class='l-hd'>{{item.week_time}}</strong><strong class='l-bd'>{{item.time}}</strong></div>
+					<div class='int-l-icon'><i class='iconfont icon-chongzhi'></i></div>
+					<div class='int-c'>
+	  					<strong class='l-hd'><em class='fs-14'>{{item.amount}}</em></strong>
+	  					<strong class='l-bd'>{{item.create_time}}-{{item.remark}}</strong>
+					</div>
+	  			</a>
+	  		</div>
+		</div>
+		<div class='pullUpLabel' ng-show='list.length>0'>
+			<a ng-click='load()' load-more='cur_status'></a>
+		</div>				
+	</article>
+	<div class='fs-12 tc pd10 fc-9 mt-10'>使用电脑访问www.shengcaijinrong.com查询更多记录</div>
+	<div class='m_sift' id='J_SiftContainer'>
+		<div class='sift_mask' id='J_SiftMask'></div>
+		<div class='sift_panel' id='J_SiftContent'>
+			<div class='content'>
+				<ul>
+					<li class='cur'>全部记录</li>
+					<li>充值记录</li>
+					<li>提现记录</li>
+					<li>投标记录</li>
+					<li>转让记录</li>
+				</ul>
+			</div>
+		</div>
+	</div>	
+</script>

@@ -1,0 +1,23 @@
+<!-- 我的-我的流量-查看详情-收入 -->
+<script type='text/ng-template' id='flowDetailExpend.html'>
+	<!--暂无数据-->
+	<div class='no-income tc' ng-show='list.length==0'>
+		<img src='../../static/img/nocontent.png' class='no'>
+		<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+	</div>
+	<table class='record-con' cellspacing='0' cellpadding='0' ng-show='list.length>0'>
+		<tr class='th'>
+			<th class='cell'>流量(M)</th>
+			<th class='cell'>备注</th>
+			<th class='cell'>日期</th>
+		</tr>
+		<tr class='td' ng-repeat='item in list'>
+			<td class='cell'>{{item.flow}}</td>
+			<td class='cell'>{{item.content}}</td>
+			<td class='cell'>{{item.date}}</td>
+		</tr>
+	</table>
+	<div class='pullUpLabel' ng-show='list.length>0'>
+		<a ng-click='load()' load-more='cur_status'></a>
+	</div>		
+</script>

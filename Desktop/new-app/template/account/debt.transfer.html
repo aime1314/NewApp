@@ -1,0 +1,59 @@
+<!-- 我的-我的投资-详情-债权转让 -->
+<script type='text/ng-template' id='debtTransfer.html'>
+	<header class='header clearfix'>
+		<span class='th'>债权转让</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-40'>
+			<div class='wap-container-slider'>
+				<div class='t'>债权转让价格：</div>
+		        <div class='mt-25 ml-15 mr-15'>
+		            <input type='hidden' class='single-slider' num-slide fair='data.ndd_fair_amount' real='data.real_amount' ng-model='transfer_amount'>
+		        </div>
+		        <div class='numBox pb-5 clearfix'>
+		          <span class='fc-9 fl'><strong class='fc-red'><em class='cl'>{{data.real_amount}}</em><em>元</em></strong></span>
+		          <span class='fc-9 fr'><strong class='fc-red'><em class='cr'>{{data.ndd_fair_amount}}</em><em>元</em></strong></span>
+		        </div>
+		        <p class='fc-9 fs-12 mt-15'>债权公允价格=剩余债权本金+截止今日本期未收利息</p>
+		    </div>
+			<!--模块 s-->
+			<div class='detail-a mt-15'>
+				<div class='th'>
+					<div class='bd-r'><span class='tit4'>债权公允价格</span><strong>{{data.ndd_fair_amount | number:2}}元</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit4'>债权转让价格</span><strong>{{transfer_amount | number:2}}元</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit4'>预计转让手续费</span><strong><em class='fc-red'>{{(transfer_amount * (0.75/100)).toFixed(2) | number:2}}</em>元</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit4'>募集截止日期</span><strong>{{data.end_day}}</strong></div>
+				</div>
+			</div>
+			<!--模块 e-->
+		
+			<!--设置支付密码 s-->
+			<div class='detail-a mt-15'>
+				<a class='th' ui-sref='debtTransferGains({nbd_id:data.nbd_id})'>
+					<div class='bd-r'>
+						<em class='fc-blue'>收益计划</em>
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				<a class='th' ui-sref='debtTransferRule'>
+					<div class='bd-r'>
+						<em class='fc-blue'>转让规则</em>
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+			</div>
+			<!--设置支付密码 e-->
+			<p class='plr-15 pt-10 fc-9 fs-12'>募集截止24:00前未满标,自动取消本次债权转让</p>
+			<div class='pd10 mt-15'>
+				<button class='btn btn-blue btnSize-1' ng-click='submitTransfer()'>确定</button>
+			</div>
+		</div>
+	</article>
+</script>

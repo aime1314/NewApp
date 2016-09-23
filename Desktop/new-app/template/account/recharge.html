@@ -1,0 +1,67 @@
+<!-- 我的-我要充值 -->
+<script type='text/ng-template' id='recharge.html'>	
+	<header class='header clearfix'>
+		<span class='th'>我要充值</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a ui-sref='account' class='header-r-word'>跳过</a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<div class='detail-a detail-module'>
+				<div class='list-thumb'>
+					<div class='thumb-box'>
+						<span class=' icon-l-module bank_{{data.headBankCode}}_p bankicon'></span>
+						<div class='txt-c-module'>
+							<p class='mod-name'>{{data.headBankName}}</p>
+							<p class='mod-card'>尾号{{data.cardCode | limitTo: -4}}</p>
+						</div>
+					</div>
+					<div class='choice-r-module'><i class='icon-zhengque2 iconfont'></i></div>
+				</div>
+			</div>
+			<p class='fc-9 mt-5 pd10 fs-14'>单笔{{data.singleQuota}}元，单日{{data.dayQuota}}元</p>
+			<!--表单模块 s-->
+			<div class='form-box clearfix'>
+				<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+					<div class='field autoClear'>
+						<div class='label'>充值金额</div>
+						<div class='field-control'>
+							<input type='text' name='amount' ng-model='amount' ng-maxlength='1000000' placeholder='请输入充值金额' class='input-req' required ng-focus num-validate='2'>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.amount.$invalid && (!submitForm.amount.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.amount.$error.required'>请输入充值金额</span>
+						<span ng-show='submitForm.amount.$error.maxlength'>充值金额过大，请重新输入</span>
+					</div>					
+					<div class='field autoClear'>
+						<div class='label'>验证码</div>
+						<div class='field-control'>
+							<input type='text' name='sms_code' ng-model='sms_code' ng-minlength='6' placeholder='请输入短信校验码' class='input-req' required ng-focus>
+						</div>
+						<button async-code smstype='{{sms_type}}' mobile='{{mobile}}' verifycodesrc='{{verifyCodeSrc}}' verifycode='{{verifyCode}}' verify='changeVerify()' class='proving-btn' ng-class='{cur:mobile && amount>= 0.01}' ng-disabled='amountCheck()'></button>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.sms_code.$invalid && (!submitForm.sms_code.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.sms_code.$error.required'>请输入短信验证码</span>
+						<span ng-show='submitForm.sms_code.$error.minlength'>请输入一个正确的短信验证码</span>
+					</div>	
+					<div class='field autoClear' ng-show='verifyCodeSrc != ""'>
+						<div class='label2'>图形验证码</div>
+						<div class='field-control'>
+							<input type='text' name='verifyCode' ng-model='verifyCode' placeholder='请输入图形验证码' class='input-req'>
+						</div>
+						<img ng-src='{{verifyCodeSrc}}' ng-click='changeVerify()' class='code-img'/>
+					</div>										
+					<div class='btn-sub mt-10'>
+						<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid}' ng-disabled='!submitForm.$valid'>确认充值</button>
+					</div>
+				</form>
+			</div>
+			<!--表单模块 e-->
+			<p class='fc-9 pd10 fs-12 line-h20'>银行卡的支付限额是由银行设定，<em class='fc-red'>无法提升</em>。若提示超限、建议分批操作</p>  
+		</div>
+	</article>
+</script>

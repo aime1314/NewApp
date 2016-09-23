@@ -1,0 +1,105 @@
+<!-- 我的-资产详情 -->
+<script type='text/ng-template' id='assetsDetail.html'>	
+	<header class='header clearfix'>
+		<span class='th'>资产详情</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main_con pb-60'>
+			<!--用户头像 s-->
+			<div class='user-top-box'>
+				<div class='user-img'>
+					<i class='iconfont icon-wode1' ng-if></i>
+					<img src='../../static/img/logo2.png' width='100%'/>
+				</div>
+				<p class='user-phone' ng-show='mobile'>{{mobile | limitTo:3}}****{{mobile | limitTo:-4}}</p>
+			</div>
+			<!--用户头像 e-->
+			
+			<!--模块 s-->
+			<div class='detail-a mt-15'>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>我的总资产</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.total_assets'>{{data.total_assets}}</em>元</strong>
+					</div>
+				</div>
+			</div>
+			<div class='assetdetail'>
+				<p>我的总资产</p>
+				<p>=可用余额+待收本金+冻结金额+天天生财持有金额；</p>
+			</div>
+			<!--模块 e-->
+			<!--模块 s-->
+			<div class='detail-a mt-15'>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>散标专区（待收本金）</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.bid_invest_total'>{{data.bid_invest_total}}</em>元</strong>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>天天生财</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.uis_avail_balance'>{{data.uis_avail_balance}}</em>元</strong>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>可用余额</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.avail_balance'>{{data.avail_balance}}</em>元</strong>
+					</div>
+				</div>
+			</div>
+			<div class='detail-a mt-15'>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>冻结金额</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.total_freeze_balance'>{{data.total_freeze_balance}}</em>元</strong>
+					</div>
+				</div>
+			</div>
+			<!--<div class='pd10 bg_white border-b'>
+				<div class='margin_lr line-h24'>
+					<p class='fc-9 clearfix'>
+						<span class='fl'>投资冻结金额</span>
+						<span class='fr'>{{data.invest_freeze_balance}}元</span>
+					</p>
+					<p class='fc-9 clearfix'>
+						<span class='fl'>提现冻结金额</span>
+						<span class='fr'>{{data.withdraw_freeze_balance}}元</span>
+					</p>
+					<p class='fc-9 clearfix'>
+						<span class='fl'>其他冻结金额</span>
+						<span class='fr'>{{data.other_freeze_balance}}元</span>
+					</p>
+				</div>
+			</div>-->
+			<!--模块 e-->
+			<!--模块 s-->
+			<!--
+			<div class='detail-a mt-15'>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit2 fl'>借款应还</span>
+						<strong class='fc-9 fr'><em class='fc-red asset-num' num-roll='data.total_wait_back'>{{data.total_wait_back}}</em>元</strong>
+					</div>
+				</div>
+			</div>
+			<div class='pd10 bg_white border-b'>
+				<div class='margin_lr line-h24'>
+					<p class='fc-9 clearfix'>
+						<span class='fl'>应还本金</span>
+						<span class='fr'>{{data.back_principle}}元</span>
+					</p>
+					<p class='fc-9 clearfix'>
+						<span class='fl'>应还利息</span>
+						<span class='fr'>{{data.back_interest}}元</span>
+					</p>
+				</div>
+			</div>
+			-->
+			<!--模块 e-->
+		</div>
+	</article>
+</script>

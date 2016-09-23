@@ -1,0 +1,57 @@
+<!-- 我的-我的投资-回款中、正常结清详情 -->
+<script type='text/ng-template' id='investDetail.html'>
+	<header class='header clearfix'>
+		<span class='th'>{{data.title}}</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con  pt-20 pb-20'>
+			<div class='detail-a'>
+				<div class='th'>
+					<div class='bd-r'><span class='tit2'>购买金额</span><strong>{{data.bid_amount | number:2}}元</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit2'>利息金额</span><strong>{{data.total_interest | number:2}}元</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit2'>年化收益</span><strong>{{data.appr_rate}}%</strong></div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'><span class='tit2'>还款方式</span><strong>{{data.appr_payment}}</strong></div>
+				</div>
+			</div>
+		
+			<div class='infomain-stauts mt-15 border-t'>
+				<div class='pt-10 fs-14 clearfix'>
+					<span class='tl fc-3 fl'>回款进度</span>
+					<span class='tr fc-3 fr'><em class='fc-red'>回款中</em><em class='ml-5'>{{data.payed_index}}/{{data.total_index}}期</em></span>
+				</div>
+				<div class='percentBox pb-15'>
+					<div class='percent-l'>
+						<div class='percent-bar' percent-anim='data.back_percent'>
+							<div class='percent-on'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='inverst-type border-t clearfix' ng-show='data.pay_plan.length>0'>
+				<a class='inverst-item inverstRecord-bd2' ng-repeat='x in data.pay_plan'>
+					<div class='int-l'><em class='fs-14 fc-9'>{{x.pay_status}}</em></div>
+					<div class='int-c'>
+						<strong class='l-hd'><em class='fs-14'>{{x.pay_amount | number:2}}元</em></strong>
+						<strong class='l-bd'><em class='fc-9'>{{x.date}}-{{x.pay_type}}</em></strong>
+					</div>
+				</a>
+			</div>
+	        <div class='pd10 mt-15' ng-show='type==2'>
+		        <button ng-click='transfer()' class='btn btn-blue btnSize-1' ng-if='data.transfer_status==0'>转让</button>
+		        <button class='btn btn-gray btnSize-1' ng-if='data.transfer_status==2'>转让</button>
+		        <button class='btn btn-gray btnSize-1' ng-if='data.transfer_status==1'>已转让</button>
+	        <!--
+	        	<button ng-click='transfer()' class='btn btn-blue btnSize-1' ng-show='transfer_status==0'>转让</button>
+	        	<button ng-click='cancelTransfer()' class='btn btn-blue btnSize-1' ng-show='transfer_status==1'>取消转让</button>
+	        	-->
+	        </div>			
+		</div>
+	</article>
+</script>

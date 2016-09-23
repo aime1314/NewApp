@@ -1,0 +1,30 @@
+<!-- 首页-系统公告 -->
+<script type='text/ng-template' id='placard.html'>
+	<header class='header clearfix'>
+		<span class='th'>系统公告</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<!--暂无数据-->
+		<div class='no-income tc' ng-show='list.length==0'>
+			<img src='../../static/img/nocontent.png' class='no'>
+			<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+		</div>	
+		<div class='main-con pb-20' ng-show='list.length>0'>
+			<ul class='noticePage clearfix mt-25'>
+				<li class='not-list on' ui-sref='placardDetail({hp_id:item.hp_id})' ng-repeat='item in list track by $index'>
+					<div class='item'>
+						<div class='dot-l'></div>
+						<div class='news-r'>
+							<div class='title'>{{item.title}}</div>
+							<div class='time'>{{item.create_time}}</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class='pullUpLabel'>
+				<a ng-click='load()' load-more='cur_status'></a>
+			</div>
+		</div>
+	</article>
+</script>

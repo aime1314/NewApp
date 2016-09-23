@@ -1,0 +1,29 @@
+<!-- 标的扩展信息-产品信息 -->
+<script type='text/ng-template' id='productInfo.html'>
+	<header class='header clearfix'>
+		<span class='th'>产品信息</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-20'>
+			<div class='detail-a mt-10'>
+				<div class='th' ng-repeat='item in data.base_info'>
+					<div class='bd-r'><span class='tit2'>{{item.key}}</span><strong>{{item.value}}</strong></div>
+				</div>
+			</div>
+			<!--tab s-->
+			<div class='tab-module mt-10 border-t clearfix'>
+				<ul class='clearfix'>
+					<li ng-class='{tab_on:$index==tabIndex}' ng-repeat='item in data.list track by $index' style='width:50%'>
+						<a ng-click='showTab($index)'>{{item.tab_name}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class='detail-a border-none-t'>
+				<div class='th' ng-repeat='item in tabList'>
+					<div class='bd-r'><span class='tit2'>{{item.key}}</span><strong>{{item.value}}</strong></div>
+				</div>
+			</div>			
+		</div>
+	</article>
+</script>

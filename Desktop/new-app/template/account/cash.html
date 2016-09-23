@@ -1,0 +1,20 @@
+<!-- 我的-我的红包 -->
+<script type='text/ng-template' id='cash.html'>	
+	<header class='header clearfix'>
+		<span class='th'>我的红包</span>
+		<a class='header-l back' back-url='account'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a ui-sref='cashExchange' class='header-r-word'>兑换</a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-20'>
+			<div class='tab-module clearfix'>
+				<ul class='clearfix'>
+					<li ng-class='{tab_on:$state.includes("cash.valid")}'><a ui-sref='cash.valid'>未使用</a></li>
+					<li ng-class='{tab_on:$state.includes("cash.used")}'><a ui-sref='cash.used'>已使用</a></li>
+					<li ng-class='{tab_on:$state.includes("cash.invalid")}'><a ui-sref='cash.invalid'>已过期</a></li>
+				</ul>
+			</div>
+			<ui-view></ui-view>
+		</div>
+	</article>
+</script>

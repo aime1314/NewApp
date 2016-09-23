@@ -1,0 +1,50 @@
+<!-- 标的扩展信息-产品信息-债权转让 -->
+<script type='text/ng-template' id='productInfoTransfer.html'>
+	<header class='header clearfix'>
+		<span class='th'>产品信息</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con'>
+			<div class='detail-a mt-10'>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit'>债权公允价格</span>
+						<em class='fc-red'>{{data.ndd_fair_amount | number:2}}元</em>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit'>转让债权价格</span>
+						<em class='fc-red'>{{data.real_amount | number:2}}元</em>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit'>赠送利息</span>
+						<em class='fc-red'>{{data.interest | number:2}}元</em>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit'>债权发标日期</span>
+						<em>{{data.pub_time}}</em>
+					</div>
+				</div>
+				<div class='th'>
+					<div class='bd-r'>
+						<span class='tit'>转让截止日期</span>
+						<em>{{data.end_time}}</em>
+					</div>
+				</div>
+				<a class='th' ui-sref='common({nb_id:data.init_nbid})'>
+					<div class='bd-r'>
+						<span class='tit'>原始标的</span>
+						<em class='fc-blue'>{{data.init_nbid_title}}</em>
+					</div>
+					<i class='icon-fangxiangyou iconfont'></i>
+				</a>
+			</div>
+		</div>
+	</article>
+</script>

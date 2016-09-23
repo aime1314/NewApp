@@ -1,0 +1,25 @@
+<!-- 标的扩展信息-用户协议 -->
+<script type='text/ng-template' id='userProtocal.html'>
+	<header class='header clearfix'>
+		<span class='th'>用户协议</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+
+	<article class='wap-main'>
+		<div class='main-con'>
+			<div class='tab-module clearfix'>
+				<ul class='clearfix'>
+					<li ng-class='{tab_on:$index==tabIndex}' ng-repeat='item in data track by $index'>
+						<a ng-click='showTab($index)'>{{item.tab_name}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class='detail-a border-none-t'>
+				<div class='th'>
+					<div class='bd-r'><span class='tit2'>{{tabContent}}</span></div>
+				</div>
+			</div>				
+		</div>
+		<ui-view></ui-view>
+	</article>
+</script>

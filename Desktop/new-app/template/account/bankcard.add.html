@@ -1,0 +1,115 @@
+<!-- 我的-设置-我的银行卡-添加银行卡 -->
+<script type='text/ng-template' id='addBankCard.html'>	
+	<header class='header clearfix'>
+		<span class='th'>添加银行卡</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+		<a ui-sref='account' class='header-r-word'>跳过</a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-60'>
+			<!--表单模块 s-->
+			<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+				<div class='form-box mt-25 clearfix'>
+					<div class='field autoClear'>
+						<div class='label'>卡号</div>
+						<div class='field-control'>
+							<input type='text' name='card' ng-model='card' ng-minlength='12' ng-maxlength='26' placeholder='请输入您的银行卡号' class='input-req' required ng-focus>
+						</div>
+					</div>	
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.card.$invalid && (!submitForm.card.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.card.$error.required'>请输入您的银行卡号</span>
+						<span ng-show='submitForm.card.$error.minlength || submitForm.card.$error.maxlength'>请输入一个正确的银行卡号</span>
+					</div>					
+					<!-- 自动检测卡号匹配div，初始化隐藏，暂不实现 -->			
+					<div class='field autoClear'>
+						<div class='label'>持卡人</div>
+						<div class='field-control'>
+							<input type='text' name='name' ng-model='name' placeholder='请输入您的真实姓名' class='input-req' required ng-focus>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.name.$invalid && (!submitForm.name.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.name.$error.required'>请输入您的真实姓名</span>
+					</div>	
+					<div class='field autoClear select-box'>
+					<div class='label'>所属银行</div>
+						<div class='field-control'>
+							<select class='input-req' name='selectedBankCode' ng-model='selectedBankCode' ng-options='x.bank_code as x.bank_name for x in bankList' required ng-changed>
+								<option value=''>请选择开卡银行</option>
+							</select>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='!selectedBankCode && (submitForm.selectedBankCode.$changed || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span>请选择开卡银行</span>
+					</div>						
+					<div class='field autoClear select-box'>
+						<div class='label'>开卡地</div>
+						<div class='field-control'>
+							<div class='slect-box'>
+								<select class='input-req' name='selectedProvinceCode' ng-model='selectedProvinceCode' ng-change='provinceChanged()' ng-options='x.province_code as x.province_name for x in provinceList' required ng-changed>
+									<option value=''>请选择</option>
+								</select>
+							</div>
+							<div class='slect-box'>
+								<select class='input-req' name='selectedCityCode' ng-model='selectedCityCode' ng-options='x.city_code as x.city_name for x in cityList' required ng-changed>
+									<option value=''>请选择</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='(!selectedProvinceCode && (submitForm.selectedProvinceCode.$changed || submitForm.submitted)) || ((selectedProvinceCode && !selectedCityCode) && (submitForm.selectedCityCode.$changed || submitForm.submitted))'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span>请选择开卡地</span>
+					</div>					
+					<div class='field autoClear'>
+						<div class='label'>手机号</div>
+						<div class='field-control'>
+							<input type='text' name='mobile' ng-model='mobile' ng-pattern='mobilePattern' placeholder='请输入银行预留手机号' class='input-req' required ng-focus>
+						</div>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.mobile.$invalid && (!submitForm.mobile.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.mobile.$error.required'>请输入银行预留手机号</span>
+						<span ng-show='submitForm.mobile.$error.pattern'>请输入一个正确的手机号</span>
+					</div>					
+					<!-- e自动检测卡号匹配div -->
+					<div class='field autoClear'>
+						<div class='label'>验证码</div>
+						<div class='field-control'>
+							<input type='text' name='sms_code' ng-model='sms_code' ng-minlength='6' placeholder='请输入短信验证码' class='input-req' required ng-focus>
+						</div>
+						<a sms-code smstype='{{sms_type}}' mobile='{{mobile}}' verifycodesrc='{{verifyCodeSrc}}' verifycode='{{verifyCode}}' verify='changeVerify()' class='proving-btn' ng-class='{cur:mobile}'></a>
+					</div>
+					<!-- error -->
+					<div class='prompt-error' ng-show='submitForm.sms_code.$invalid && (!submitForm.sms_code.$focused || submitForm.submitted)'>
+						<i class='iconfont icon-cuowu1'></i>
+						<span ng-show='submitForm.sms_code.$error.required'>请输入短信验证码</span>
+						<span ng-show='submitForm.sms_code.$error.minlength'>请输入一个正确的短信验证码</span>
+					</div>	
+					<div class='field autoClear' ng-show='verifyCodeSrc != ""'>
+						<div class='label2'>图形验证码</div>
+						<div class='field-control'>
+							<input type='text' name='verifyCode' ng-model='verifyCode' placeholder='请输入图形验证码' class='input-req'>
+						</div>
+						<img ng-src='{{verifyCodeSrc}}' ng-click='changeVerify()' class='code-img'/>
+					</div>										
+					<div class='pd10 mt-15'>
+						<button class='btn btnSize-1' ng-class='{"btn-blue":submitForm.$valid && agree}'  ng-disabled='!submitForm.$valid && agree'>确定</button>
+					</div>
+				</div>
+				<!--表单模块 e-->
+			</form>
+			<div class='agreement'>
+				<i class='iconfont icon-zhengque1' ng-class='{"fc-green":agree}' ng-click='switchAgree()'></i>我已阅读并同意平台《<a ui-sref="summary({type:8})" class='fc-blue fs-12'>生菜金融用户绑卡协议书</a>》
+			</div>  
+
+		</div>
+	</article>
+</script>

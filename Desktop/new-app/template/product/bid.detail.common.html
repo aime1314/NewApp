@@ -1,0 +1,96 @@
+<!-- 普通标的详情 -->
+<script type='text/ng-template' id='common.html'>
+	<header class='header clearfix'>
+		<span class='th'>{{data.title}}</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		<div class='main-con pb-40'>
+			<div class='product-head-page'>
+				<p class='assets-mon pt-10'>年化收益</p>
+				<div class='integral-num'><span class='elli'>{{data.final_rate}}</span><em>%</em></div>
+				<div class='fund-box mt-5 pb-5'>
+					<ul class='ul-list clearfix'>
+						<li class='li'><span>投资期限{{data.term}}{{data.term_coda}}</span><em class='line'></em></li>
+						<li class='li'><span>起投金额{{data.min_amount}}元</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class='infomain-stauts'>
+				<div class='percentBox'>
+					<div class='percent-l'>
+						<div class='percent-bar' percent-anim='data.percentage'>
+							<div class='percent-on'></div>
+						</div>
+					</div>
+					<div class='ml-5 fs-12'>{{data.percentage}}%</div>
+				</div>
+				<div class='txt-con'>
+					<div class='mon-count conDiv'>
+						<span>标的总额<em class='fs-14 fc-red'>{{data.appr_amount | number:2}}元</em></span>
+						
+					</div>
+					<div class='mon-amount conDiv'>
+						<span>剩余金额<em class='fs-14 fc-red' roll2-num>{{data.left_amount | number:2}}元</em></span>
+					</div>
+				</div>
+				<div class='txt-con pb-10'>
+					<strong class='fs-12'>还款方式：{{data.payment_desc}}</strong>
+				</div>
+			</div>
+			<!--充值 s-->
+			<div class='rehModule mt-10'>
+				<div class='user-account'>账户余额(元)：
+					<span ng-show='!is_login'>请<span class='fc-blue' ng-click='login()'>登录</span>后查看</span>
+					<em ng-show='is_login' class='fc-red'>{{balance | number:2}}</em>
+					<a ng-show='is_login' ui-sref='recharge' class='rechange-a'>充值</a>
+				</div>
+				
+				<form novalidate ng-submit='submit()' name='submitForm' autocomplete='off'>
+					<div class='invest-account'>
+						<div class='account-l'>
+							<input type='text' class='acc-inp' name='bid_amount' ng-model='bid_amount' 
+								num-validate maxlength="12" placeholder='{{data.min_amount}}元起投' required 
+								amount-validate minamount='{{data.min_amount}}' leftamount='{{data.left_amount}}' balance='{{balance}}' bidtype='0' ng-change='expectInterest()'>
+							<span ng-show='is_login' class='lab' ng-click='allIn()'>全投</span>
+							<span ng-show='!is_login' class='lab' style='color:#ccc'>全投</span>
+						</div>
+						<div class='account-r'>
+							<button class='acc-btn' ng-class='{cur:submitForm.$valid}' ng-show='data.percentage!=100'>立即投资</button>
+							<button class='acc-btn' ng-show='data.percentage==100' disabled='true'>已售罄</button>
+						</div>
+					</div>
+				</form>
+				<div class='user-account mt-10'>预期收益(元)：<em class='fc-red'>{{expect_interest | number:2}}</em></div>
+			</div>
+			<!--充值 e-->
+			<!--红包 s-->
+			<div class='detail-a mt-15' ng-if='false'>
+				<a class='th' ng_click='pick()'>
+					<div class='bd-r'>红包
+						<span class='sp-lab' ng-show='scc_id'>已选红包<em class='fc-red'>{{bonus_amount}}</em>元</span>
+						<span class='sp-lab' ng-show='!scc_id'>请选择</span>
+						<i class='icon-fangxiangyou iconfont'></i>
+					</div>
+				</a>
+				<div class='th'>
+					<div class='bd-r'>实际支付(元)：<em class='fc-red'>{{pay_amount}}</em></div>
+				</div>
+			</div>
+			<!--红包 e-->
+			<!--产品信息 s-->
+			<div class='detail-a mt-15'>
+				<a class='th' ui-sref='productInfo({nb_id:data.nb_id})'>
+					<div class='bd-r'>产品信息<i class='icon-fangxiangyou iconfont'></i></div>
+				</a>
+				<a class='th' ui-sref='repaymentPlan({nb_id:data.nb_id, nb_type:2})'>
+					<div class='bd-r'>还款计划<i class='icon-fangxiangyou iconfont'></i></div>
+				</a>
+				<a class='th' ui-sref='investLog({nb_id:data.nb_id, nb_type:2})'>
+					<div class='bd-r'>投资记录<i class='icon-fangxiangyou iconfont'></i></div>
+				</a>
+			</div>
+			<!--产品信息 e-->
+		</div>
+	</article>
+</script>

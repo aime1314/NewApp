@@ -1,0 +1,63 @@
+<!-- 更多 -->
+<script type='text/ng-template' id='more.html'>
+  	<header class='header clearfix'>
+    	<span class='th'>更多</span>
+  	</header>
+	<article class='wap-main'>
+    	<div class='main-con pb-60'>
+      		<!--更多模块 s-->
+	      	<div class='detail-a mt-25'>
+	        	<a class='th' ui-sref='summary({type:5})'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-jikediancanicon35-copy-copy iconfont'></i>平台介绍
+	              		<i class='icon-fangxiangyou iconfont'></i>
+	        		</div>
+	         	</a>
+	    		<a class='th' ui-sref='summary({type:1})'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-guoqibeijing iconfont'></i>国资股东
+	              		<i class='icon-fangxiangyou iconfont'></i>
+	            	</div>
+	         	</a>
+	         	<a class='th' ui-sref='summary({type:4})'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-anquan1 iconfont'></i>资金安全
+	              		<i class='icon-fangxiangyou iconfont'></i>
+	        		</div>
+	         	</a>
+	         	<a class='th' ui-sref='summary({type:6})'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-msnui-rule-page iconfont'></i>规范运营
+	              		<i class='icon-fangxiangyou iconfont'></i>
+	        		</div>
+	         	</a>
+	         	<a class='th' ui-sref='summary({type:3})'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-anquan iconfont'></i>平台收益
+	              		<i class='icon-fangxiangyou iconfont'></i>
+	        		</div>
+	         	</a>
+	      	</div>
+	    	<!--更多模块 e-->
+	    	<!--联系客服模块 s-->
+	      	<div class='detail-a mt-15'>
+	      		<a class='th'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-weixin iconfont'></i>
+                        <em class='fc-orange' style='margin-left: -4px;'>官方公众号</em>
+                        <span class='sp-lab'><em class='fc-red'>shengcaijinrong</em></span>
+	            	</div>
+	         	</a>
+	         	<a class='th' ng-click='dial()'>
+	            	<div class='bd-r'>
+	              		<i class='icon-left icon-qunfengfuwudianhua iconfont'></i>联系客服
+	              		<span class='sp-lab tel-lab'><em class='fc-red'>{{hot_line}}</em></span>
+	              		<i ng-show='dialEnable' class='icon-fangxiangyou iconfont'></i>
+	            	</div>
+	         	</a>
+	      	</div>
+    		<!--联系客服模块 e-->
+    	</div>
+  	</article>
+	<ng-include src='"footer.html"'></ng-include>
+</script>

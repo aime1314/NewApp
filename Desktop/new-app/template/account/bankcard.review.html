@@ -1,0 +1,31 @@
+<!-- 我的-设置-我的银行卡 -->
+<script type='text/ng-template' id='reviewBankCard.html'>	
+	<header class='header clearfix'>
+		<span class='th'>我的银行卡</span>
+		<a class='header-l back'><i class='icon-fangxiangzuo iconfont'></i></a>
+	</header>
+	<article class='wap-main'>
+		
+		<div class='main-con pb-60'>
+			<!--暂无数据-->
+			<div class='no-income tc' ng-show='list.length==0'>
+				<img src='../../static/img/nocontent.png' class='no'>
+				<p class='fs-14 fc-9 mt-10 pb-10'>暂无数据</p>
+			</div>	
+			<!--银行卡列表 s-->
+			<div class='bankListBox' ng-show='list.length>0'>
+				<div class='carditem' ng-repeat='item in list'>
+					<div class='bankCon'>
+						<div class='bank_l'><i class='bankicon bank_{{item.headBankCode}}_p'></i></div>
+						<div class='bank_r'>
+							<div class='bankname'>{{item.headBankName}}</div>
+							<div class='banktier'>储蓄卡</div>
+							<div class='banknum'>**** **** **** {{item.cardCode | limitTo: -4}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--银行卡列表 e-->
+		</div>
+	</article>
+</script>
